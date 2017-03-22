@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<!-- HTML page name and path :: Fragment name -->
+<!-- All locations are relative to the path: src/main/resources/templates -->
+<head th:replace="common/header :: common-header"></head>
+
+<body>
+	<div data-role="page" class="jqm-demos" id="panel-fixed-page1" data-title="Panel fixed positioning">
+
+		<div th:replace="common/navbar :: navbar"></div>
+
+		<div data-role="main">
+			<div data-role="tabs" id="tabs">
+				<div data-role="navbar">
+					<ul>
+						<li th:each="eventDate, iter : ${eventDates}" th:class="${iter.first} ? 'ui-block-a ui-state-default ui-corner-top ui-state-focus ui-tabs-active ui-state-active'">
+							<a data-ajax="false" th:class="${iter.first} ? 'ui-btn-active'" th:href="|#tab_${eventDate}|" th:text="${#dates.format(eventDate, 'dd/MM')}"></a>
+						</li>
+					</ul>
+				</div>
+				<div th:id="|tab_${eventDate}|" class="ui-body-d un-content" th:each="eventDate, iter : ${eventDates}">
+					<ul data-role="listview" data-inset="true" data-corners="false">
+						<li th:id="${program.id}" th:each="program : ${programList.get(eventDate)}">
+							<a th:href="@{/program/__${program.id}__}" th:text="${program.title}"></a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<div th:replace="common/footer :: fixed-footer"></div>
+
+		<div th:replace="common/menu :: menu-panel"></div>
+
+		<div th:replace="common/login :: login-panel"></div>
+
+	</div>
+
+
+	<!-- <div class="container">
+		<div>
+			Nav tabs
+			<ul class="nav nav-pills nav-justified" role="tablist">
+				<li id="programListTabs" role="presentation" th:each="eventDate, iter : ${eventDates}">
+					<a th:href="|#tab_${eventDate}|" th:text="${#dates.format(eventDate, 'dd/MM')}"></a>
+				</li>
+			</ul>
+			Tab panes
+			<div class="tab-content">
+				<div role="tabpanel" class="tab-pane" th:id="|tab_${eventDate}|" th:each="eventDate, iter : ${eventDates}">
+					<ul class="list-group">
+						<li class="list-group-item" th:id="${program.id}" th:each="program : ${programList.get(eventDate)}">
+							<span class="badge" th:text="${#dates.format(program.endDate, 'HH:mm')}"></span>
+							<span class="badge badge-reverse">-</span>
+							<span class="badge" th:text="${#dates.format(program.beginDate, 'HH:mm')}"></span>
+							<a th:href="@{/program/__${program.id}__}" th:text="${program.title}"></a>
+							<p th:text="${program.title}"></p>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div> -->
+
+	<!-- Bootstrap core JavaScript -->
+	<div th:replace="common/header :: before-body-scripts"></div>
+</body>
+</html>

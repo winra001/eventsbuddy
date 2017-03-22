@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<!-- HTML page name and path :: Fragment name -->
+<!-- All locations are relative to the path: src/main/resources/templates -->
+<head th:replace="common/header :: common-header"></head>
+
+<body>
+	<div data-role="page" class="jqm-demos" id="panel-fixed-page1" data-title="Panel fixed positioning">
+		<div th:replace="common/navbar :: backward-navbar"></div>
+
+		<div data-role="main">
+			<h1 th:text="${program.title}"></h1>
+		</div>
+
+		<div th:replace="common/footer :: fixed-footer"></div>
+
+		<div th:replace="common/login :: login-panel"></div>
+	</div>
+
+	<!-- jQuery core JavaScript -->
+	<div th:replace="common/header :: before-body-scripts"></div>
+</body>
+</html>
