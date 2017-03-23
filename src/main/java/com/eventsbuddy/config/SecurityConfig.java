@@ -47,7 +47,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	public AuthenticationSuccessHandler successHandler() {
 	    return new CustomLoginSuccessHandler("/programs");
 	}
-	
+
 	@Bean
 	public LogoutSuccessHandler logoutSuccessHandler() {
 		SimpleUrlLogoutSuccessHandler handler = new SimpleUrlLogoutSuccessHandler();
@@ -80,8 +80,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.formLogin().loginPage("/login").successHandler(successHandler()).permitAll()
 			.failureUrl("/login?error").permitAll()
 			.and()
-			.logout().permitAll();
-			// .logout().logoutSuccessHandler(logoutSuccessHandler()).permitAll();
+			.logout().logoutSuccessHandler(logoutSuccessHandler()).permitAll();
 	}
 
 	@Autowired

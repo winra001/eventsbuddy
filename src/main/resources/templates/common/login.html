@@ -16,9 +16,6 @@
                 <div class="ui-block-b" th:if="${#authorization.expression('!isAuthenticated()')}">
                 	<button type="submit" class="ui-btn ui-shadow ui-corner-all ui-btn-a ui-mini">Login</button>
                 </div>
-                <div class="ui-block-b" th:if="${#authorization.expression('isAuthenticated()')}">
-                	<a th:href="@{/logout}" data-ajax="false" class="ui-btn ui-shadow ui-corner-all ui-btn-a ui-mini">Logout</a>
-                </div>
 			</div>
         </form>
 	</div><!-- /panel -->
