@@ -36,11 +36,11 @@ public class ProgramController {
 
 	private static final Logger LOG = LoggerFactory.getLogger(ProgramController.class);
 
-	private static final String IMPORT_PROGRAM_URL_MAPPING = "/importProgram";
+	private final String IMPORT_PROGRAM_URL_MAPPING = "/importPrograms";
 
-	private static final String IMPORT_PROGRAM_VIEW_NAME = "program/importProgram";
+	private final String IMPORT_PROGRAM_VIEW_NAME = "program/importPrograms";
 
-	public static final String IMPORT_PROGRAM_MESSAGE_KEY = "imported";
+	public final String IMPORT_PROGRAM_MESSAGE_KEY = "imported";
 
 	@Autowired
 	private PoiService poiService;
@@ -93,7 +93,7 @@ public class ProgramController {
 	}
 
 	/**
-	 * Imports Program from Excel
+	 * Imports Programs from Excel
 	 */
 	@RequestMapping(value = IMPORT_PROGRAM_URL_MAPPING, method = RequestMethod.POST)
 	public String importProgramsPost(ModelMap model,

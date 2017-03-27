@@ -4,10 +4,10 @@
 	<div th:fragment="navbar" data-role="header" data-position="fixed">
 		<h1>Fixed header</h1>
 		<a href="#menu-panel" data-icon="bars" data-iconpos="notext">Menu</a>
-		<a th:href="@{/login}" th:if="${#authorization.expression('!isAuthenticated()')}" class="ui-btn" data-role="button" role="button" th:text="#{button.signin.text}"></a>
+		<a th:href="@{/login}" th:if="${#authorization.expression('!isAuthenticated()')}" class="ui-btn" data-role="button" role="button" th:text="#{text.signin}"></a>
 		<div th:if="${#authorization.expression('isAuthenticated()')}">
 	        <form id="f" th:action="@{/logout}" method="post" role="form" class="navbar-form">
-				<button type="submit" class="ui-btn ui-btn-right" th:text="#{button.signout.text}"></button>
+				<button type="submit" class="ui-btn ui-btn-right" th:text="#{text.signout}"></button>
 			</form>
 		</div>
 	</div>
@@ -15,10 +15,10 @@
 	<div th:fragment="backward-navbar" data-role="header" role="banner" data-position="fixed" class="ui-header ui-bar-inherit">
 		<h1></h1>
 		<a href="../" data-rel="back" data-icon="arrow-l" data-iconpos="notext" data-ajax="false" class="ui-link ui-btn-left ui-btn ui-icon-carat-l ui-btn-icon-notext ui-shadow ui-corner-all" data-role="button" role="button"></a>
-		<a th:href="@{/login}" th:if="${#authorization.expression('!isAuthenticated()')}" class="ui-btn" data-role="button" role="button" th:text="#{button.signin.text}"></a>
+		<a th:href="@{/login}" th:if="${#authorization.expression('!isAuthenticated()')}" class="ui-btn" data-role="button" role="button" th:text="#{text.signin}"></a>
 		<div th:if="${#authorization.expression('isAuthenticated()')}">
 	        <form id="f" th:action="@{/logout}" method="post" role="form" class="navbar-form">
-				<button type="submit" class="ui-btn ui-btn-right" th:text="#{button.signout.text}"></button>
+				<button type="submit" class="ui-btn ui-btn-right" th:text="#{text.signout}"></button>
 			</form>
 		</div>
 	</div>

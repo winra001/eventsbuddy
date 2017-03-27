@@ -13,7 +13,7 @@
 		<!-- content -->
 	    <div role="main" class="ui-content jqm-content jqm-fullwidth">
 			<form id="loginForm" class="userform" th:action="@{/login}" method="post" data-ajax="false">
-	        	<h2>Login</h2>
+	        	<h2 th:text="#{text.signin}"></h2>
 	
 	            <label for="name">Username:</label>
 	            <input type="text" name="username" id="username" value="" data-clear-btn="true" data-mini="true"></input>
@@ -22,13 +22,12 @@
 	            <input type="password" name="password" id="password" value="" data-clear-btn="true" autocomplete="off" data-mini="true"></input>
 	
 	            <div class="ui-grid-a">
-	                <div class="ui-block-a"><a href="#" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-btn-a ui-mini">Cancel</a></div>
-	                <!-- <div class="ui-block-b"><a href="#" id="btnLogin" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-btn-a ui-mini">Login</a></div> -->
 	                <div class="ui-block-b" th:if="${#authorization.expression('!isAuthenticated()')}">
-	                	<button type="submit" class="ui-btn ui-shadow ui-corner-all ui-btn-a ui-mini">Login</button>
+	                	<button type="submit" class="ui-btn ui-shadow ui-corner-all ui-btn-a ui-mini" th:text="#{text.signin}"></button>
 	                </div>
 				</div>
 	        </form>
+	                <div class="ui-block-a"><a th:href="@{/signup}" data-ajax="false" class="ui-btn ui-shadow ui-corner-all ui-btn-a ui-mini" th:text="#{text.signup}"></a></div>
 		</div><!-- /content -->
 	
 		<div th:replace="common/footer :: fixed-footer"></div>

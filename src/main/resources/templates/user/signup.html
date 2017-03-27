@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<!-- HTML page name and path :: Fragment name -->
+<!-- All locations are relative to the path: src/main/resources/templates -->
+<head th:replace="common/header :: common-header"></head>
+
+<body>
+	<div data-role="page" class="jqm-demos" id="panel-fixed-page1" data-title="Panel fixed positioning">
+	
+		<div th:replace="common/navbar :: navbar"></div>
+		
+		<!-- content -->
+		<div role="main" class="ui-content jqm-content jqm-fullwidth">
+			<form id="signUpForm" class="userform" th:action="@{/signup}" method="post" data-ajax="false">
+				<h2 th:text="#{text.signup}"></h2>
+
+				<label for="username">Email:</label>
+				<input type="text" name="username" id="username" value="" data-clear-btn="true" data-mini="true"></input>
+
+				<label for="firstName">First Name:</label>
+				<input type="text" name="firstName" id="firstName" value="" data-clear-btn="true" data-mini="true"></input>
+
+				<label for="lastName">Last Name:</label>
+				<input type="text" name="lastName" id="lastName" value="" data-clear-btn="true" data-mini="true"></input>
+
+				<label for="password">Password:</label>
+	            <input type="password" name="password" id="password" value="" data-clear-btn="true" autocomplete="off" data-mini="true"></input>
+
+	            <label for="confirmPassword">Confirm Password:</label>
+	            <input type="password" name="confirmPassword" id="confirmPassword" value="" data-clear-btn="true" autocomplete="off" data-mini="true"></input>
+
+	            <div class="ui-block-b" th:if="${#authorization.expression('!isAuthenticated()')}">
+                	<button type="submit" class="ui-btn ui-shadow ui-corner-all ui-btn-a ui-mini" th:text="#{form.submit}"></button>
+                </div>
+	    	</form>
+	    </div>
+		<!-- <div class="container">
+			<div class="row">
+				<div class="col-md-6 col-md-offset-3">
+					<div th:if="${signedUp != null}">
+						<div th:if="${signedUp == 'true'}" class="alert alert-success alert-dissmissible" role="alert">
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">x</span>
+							</button>
+							<p th:text="#{signup.profile.created.success}" class="text-center"></p>
+						</div>
+						<div th:if="${signedUp == 'false'}" class="alert alert-danger alert-dissmissible" role="alert">
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">x</span>
+							</button>
+							<p th:text="${message}" class="text-center"></p>
+						</div>
+					</div>
+					
+					<div class="well">
+						<div class="text-center">
+							<h1 th:text="#{text.signup}"></h1>
+							<form id="signupForm" th:action="@{/signup}" method="post" class="form-data"
+								  th:object="${__${T(com.eventsbuddy.controller.SignupController).USERDTO_MODEL_KEY_NAME}__}">
+								<div class="form-group text-left">
+									<div th:if="${duplicatedUsername}">
+										<label for="username" th:text="#{signup.form.error.email.already.exists}"></label>
+										<input type="text" id="username" name="username" th:field="*{username}" class="form-control fieldError" />
+										<span class="help-block" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></span>
+									</div>
+									<div th:if="${duplicatedUsername == null}">
+										<label for="username">Email</label>
+										<input type="text" id="username" th:field="*{username}" class="form-control" />
+										<span class="help-block" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></span>
+									</div>
+								</div>
+								<div class="form-group text-left">
+			                        <label for="firstName">First Name</label>
+			                        <input type="text" id="firstName" th:field="*{firstName}" class="form-control"/>
+			                        <span class="help-block" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></span>
+			                    </div>
+								<div class="form-group text-left">
+			                        <label for="lastName">Last Name</label>
+			                        <input type="text" id="lastName" th:field="*{lastName}" class="form-control"/>
+			                        <span class="help-block" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></span>
+			                    </div>
+								<div class="form-group text-left">
+			                        <label for="password">Password</label>
+			                        <input type="password" id="password" th:field="*{password}" class="form-control"/>
+			                        <span class="help-block" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+			                    </div>
+			                    <div class="form-group text-left">
+			                        <label for="confirmPassword">Confirm Password</label>
+			                        <input type="password" id="confirmPassword" th:field="*{confirmPassword}" class="form-control"/>
+			                        <span class="help-block" th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}"></span>
+			                    </div>
+			                    <button type="submit" class="btn btn-primary">Submit</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div> -->
+	</div>
+
+	<!-- Bootstrap core JavaScript -->
+	<div th:replace="common/header :: before-body-scripts"></div>
+</body>
+</html>

@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 	<div th:fragment="menu-panel" id="menu-panel" data-role="panel" data-position-fixed="true" data-display="overlay" data-theme="b">
 		<ul data-role="listview">
             <li data-icon="delete"><a href="#" data-rel="close">Close menu</a></li>
 			<li><a th:href="@{/programs}" data-ajax="false">Programs</a></li>
+			<li sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/importPrograms}" data-ajax="false">Import Programs</a></li>
+			<li sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/importAttendance}" data-ajax="false">Import Attendance</a></li>
 		</ul>
 	</div>
 </html>

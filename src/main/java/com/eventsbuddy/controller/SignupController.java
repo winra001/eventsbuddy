@@ -95,7 +95,7 @@ public class SignupController {
 
 		model.addAttribute(SIGNED_UP_MESSAGE_KEY, "true");
 
-		return SUBSCRIPTION_VIEW_NAME;
+		return "program/programs";
 	}
 
 	private void checkForDuplicates(UserDto userDto, ModelMap model) {
