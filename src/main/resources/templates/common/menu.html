@@ -5,7 +5,7 @@
             <li data-icon="delete"><a href="#" data-rel="close">Close menu</a></li>
 			<li><a th:href="@{/programs}" data-ajax="false">Programs</a></li>
 			<li sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/importPrograms}" data-ajax="false">Import Programs</a></li>
-			<li sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/importAttendance}" data-ajax="false">Import Attendance</a></li>
+			<li sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/importAttendances}" data-ajax="false">Import Attendance</a></li>
 		</ul>
 	</div>
 </html>

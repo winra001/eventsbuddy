@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<!-- HTML page name and path :: Fragment name -->
+<!-- All locations are relative to the path: src/main/resources/templates -->
+<head th:replace="common/header :: common-header"></head>
+
+<body>
+	<div data-role="page" class="jqm-demos ui-responsive-panel ui-page ui-page-theme-a ui-page-active">
+
+		<div th:replace="common/navbar :: navbar"></div>
+	
+		<div role="main" class="ui-content jqm-content jqm-fullwidth">
+			<h1>Import Attendances</h1>
+	
+			<div th:if="${imported != null}">
+				<div th:if="${imported == 'true'}" class="alert alert-success alert-dissmissible" role="alert">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">x</span>
+					</button>
+					<p th:text="#{import.attendances.imported.success}" class="text-center"></p>
+				</div>
+				<div th:if="${imported == 'false'}" class="alert alert-danger alert-dissmissible" role="alert">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">x</span>
+					</button>
+					<p th:text="${message}" class="text-center"></p>
+				</div>
+			</div>
+	
+			<div>
+				<form id="importAttendancesForm" data-ajax="false" th:action="@{/importAttendances}" method="post" class="text-left" enctype="multipart/form-data">
+					<div class="form-group">
+	                      <label for="file" th:text="#{import.attendances.upload.file}"></label>
+	                      <input type="file" id="file" name="file" class="form-control" />
+	                  </div>
+	                  <button type="submit" class="btn btn-primary" th:text="#{form.submit}"></button>
+				</form>
+			</div>
+		</div>
+	
+		<div th:replace="common/footer :: fixed-footer"></div>
+		
+		<div th:replace="common/menu :: menu-panel"></div>
+		
+		<div th:replace="common/login :: login-panel"></div>
+	
+	</div>
+
+	<!-- Bootstrap core JavaScript -->
+	<div th:replace="common/header :: before-body-scripts"></div>
+</body>
+</html>

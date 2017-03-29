@@ -24,9 +24,9 @@ public class AttendanceController {
 
 	private static final Logger LOG = LoggerFactory.getLogger(AttendanceController.class);
 
-	private static final String IMPORT_ATTENDANCE_URL_MAPPING = "/importAttendance";
+	private static final String IMPORT_ATTENDANCE_URL_MAPPING = "/importAttendances";
 
-	private static final String IMPORT_ATTENDANCE_VIEW_NAME = "attendance/importAttendance";
+	private static final String IMPORT_ATTENDANCE_VIEW_NAME = "attendance/importAttendances";
 
 	public static final String IMPORT_ATTENDANCE_MESSAGE_KEY = "imported";
 
