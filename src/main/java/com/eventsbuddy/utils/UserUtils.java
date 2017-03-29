@@ -7,7 +7,7 @@ public class UserUtils {
 
 	public static <T extends UserDto> User fromUserDtoToDomainUser(T userDto) {
 		User user = new User();
-		user.setUsername(userDto.getUsername());
+		user.setUsername(userDto.getEmail());
 		user.setPassword(userDto.getPassword());
 		user.setFirstName(userDto.getFirstName());
 		user.setLastName(userDto.getLastName());

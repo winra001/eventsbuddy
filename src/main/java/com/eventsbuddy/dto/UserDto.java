@@ -14,7 +14,7 @@ public class UserDto implements Serializable {
 	@NotNull(message = "Email is required")
 	@NotBlank(message = "Email is required")
 	@Email
-	private String username;
+	private String email;
 
 	@NotNull(message = "Password is required")
 	@NotBlank(message = "Password is required")
@@ -32,12 +32,12 @@ public class UserDto implements Serializable {
 	@NotBlank(message = "Last name is required")
 	private String lastName;
 
-	public String getUsername() {
-		return username;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getPassword() {
@@ -76,7 +76,7 @@ public class UserDto implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((username == null) ? 0 : username.hashCode());
+		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		return result;
 	}
 
@@ -89,10 +89,10 @@ public class UserDto implements Serializable {
 		if (!(obj instanceof UserDto))
 			return false;
 		UserDto other = (UserDto) obj;
-		if (username == null) {
-			if (other.username != null)
+		if (email == null) {
+			if (other.email != null)
 				return false;
-		} else if (!username.equals(other.username))
+		} else if (!email.equals(other.email))
 			return false;
 		return true;
 	}
@@ -100,8 +100,8 @@ public class UserDto implements Serializable {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("UserDto [username=");
-		builder.append(username);
+		builder.append("UserDto [email=");
+		builder.append(email);
 		builder.append(", firstName=");
 		builder.append(firstName);
 		builder.append(", lastName=");

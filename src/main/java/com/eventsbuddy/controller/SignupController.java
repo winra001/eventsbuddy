@@ -99,7 +99,7 @@ public class SignupController {
 	}
 
 	private void checkForDuplicates(UserDto userDto, ModelMap model) {
-		if (userService.findByUsername(userDto.getUsername()) != null) {
+		if (userService.findByUsername(userDto.getEmail()) != null) {
 			model.addAttribute(DUPLICATED_USERNAME_KEY, true);
 		}
 	}

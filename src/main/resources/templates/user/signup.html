@@ -12,11 +12,11 @@
 		
 		<!-- content -->
 		<div role="main" class="ui-content jqm-content jqm-fullwidth">
-			<form id="signUpForm" class="userform" th:action="@{/signup}" method="post" data-ajax="false">
+			<form id="signupForm" class="userform" th:action="@{/signup}" method="post" data-ajax="false">
 				<h2 th:text="#{text.signup}"></h2>
 
-				<label for="username">Email:</label>
-				<input type="text" name="username" id="username" value="" data-clear-btn="true" data-mini="true"></input>
+				<label for="email">Email:</label>
+				<input type="email" name="email" id="email" value="" data-clear-btn="true" data-mini="true"></input>
 
 				<label for="firstName">First Name:</label>
 				<input type="text" name="firstName" id="firstName" value="" data-clear-btn="true" data-mini="true"></input>
