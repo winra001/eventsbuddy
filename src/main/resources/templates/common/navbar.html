@@ -1,26 +1,22 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
 	<div th:fragment="navbar" data-role="header" data-position="fixed">
 		<h1>Fixed header</h1>
 		<a href="#menu-panel" data-icon="bars" data-iconpos="notext">Menu</a>
-		<a th:href="@{/login}" th:if="${#authorization.expression('!isAuthenticated()')}" class="ui-btn" data-role="button" role="button" th:text="#{text.signin}"></a>
-		<div th:if="${#authorization.expression('isAuthenticated()')}">
-	        <form id="f" th:action="@{/logout}" method="post" role="form" class="navbar-form">
-				<button type="submit" class="ui-btn ui-btn-right" th:text="#{text.signout}"></button>
-			</form>
-		</div>
+		<a th:href="@{/login}" th:if="${#authorization.expression('!isAuthenticated()')}" class="ui-btn" data-role="button" role="button" data-ajax="false" th:text="#{text.signin}"></a>
+		<form id="signoutForm" th:if="${#authorization.expression('isAuthenticated()')}" th:action="@{/logout}" data-ajax="false" method="post" role="form">
+			<button type="submit" data-icon="action" class="ui-btn-right" sec:authentication="principal.firstName"></button>
+		</form>
 	</div>
 
 	<div th:fragment="backward-navbar" data-role="header" role="banner" data-position="fixed" class="ui-header ui-bar-inherit">
 		<h1></h1>
 		<a href="../" data-rel="back" data-icon="arrow-l" data-iconpos="notext" data-ajax="false" class="ui-link ui-btn-left ui-btn ui-icon-carat-l ui-btn-icon-notext ui-shadow ui-corner-all" data-role="button" role="button"></a>
-		<a th:href="@{/login}" th:if="${#authorization.expression('!isAuthenticated()')}" class="ui-btn" data-role="button" role="button" th:text="#{text.signin}"></a>
-		<div th:if="${#authorization.expression('isAuthenticated()')}">
-	        <form id="f" th:action="@{/logout}" method="post" role="form" class="navbar-form">
-				<button type="submit" class="ui-btn ui-btn-right" th:text="#{text.signout}"></button>
-			</form>
-		</div>
+		<a th:href="@{/login}" th:if="${#authorization.expression('!isAuthenticated()')}" class="ui-btn" data-role="button" role="button" data-ajax="false" th:text="#{text.signin}"></a>
+		<form id="signoutForm" th:if="${#authorization.expression('isAuthenticated()')}" th:action="@{/logout}" data-ajax="false" method="post" role="form">
+			<button type="submit" data-icon="action" class="ui-btn-right" sec:authentication="principal.firstName"></button>
+		</form>
 	</div>
 
 </html>
