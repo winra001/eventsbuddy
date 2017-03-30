@@ -5,6 +5,8 @@
 		<h1>Fixed header</h1>
 		<a href="#menu-panel" data-icon="bars" data-iconpos="notext">Menu</a>
 		<a th:href="@{/login}" th:if="${#authorization.expression('!isAuthenticated()')}" class="ui-btn" data-role="button" role="button" data-ajax="false" th:text="#{text.signin}"></a>
+		
+		<!-- Ref: http://www.baeldung.com/get-user-in-spring-security -->
 		<form id="signoutForm" th:if="${#authorization.expression('isAuthenticated()')}" th:action="@{/logout}" data-ajax="false" method="post" role="form">
 			<button type="submit" data-icon="action" class="ui-btn-right" sec:authentication="principal.firstName"></button>
 		</form>
