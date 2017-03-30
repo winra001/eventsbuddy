@@ -4,76 +4,45 @@
 <head th:replace="common/header :: common-header"></head>
 
 <body class="ui-mobile-viewport ui-overlay-a">
-<div data-role="page" class="jqm-demos ui-responsive-panel ui-page ui-page-theme-a ui-page-active">
-	<div th:replace="common/navbar :: navbar"></div>
+	<div data-role="page" class="jqm-demos ui-responsive-panel ui-page ui-page-theme-a ui-page-active">
+		<div th:replace="common/navbar :: navbar"></div>
+		
+		<div role="main" class="ui-content jqm-content jqm-fullwidth">
+			<h1>Import Programs</h1>
 	
-	<div role="main" class="ui-content jqm-content jqm-fullwidth">
-		<h1>Import Programs</h1>
-
-		<div th:if="${imported != null}">
-			<div th:if="${imported == 'true'}" class="alert alert-success alert-dissmissible" role="alert">
-				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-					<span aria-hidden="true">x</span>
-				</button>
-				<p th:text="#{import.program.imported.success}" class="text-center"></p>
+			<div th:if="${imported != null}">
+				<div th:if="${imported == 'true'}" class="alert alert-success alert-dissmissible" role="alert">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">x</span>
+					</button>
+					<p th:text="#{import.program.imported.success}" class="text-center"></p>
+				</div>
+				<div th:if="${imported == 'false'}" class="alert alert-danger alert-dissmissible" role="alert">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">x</span>
+					</button>
+					<p th:text="${message}" class="text-center"></p>
+				</div>
 			</div>
-			<div th:if="${imported == 'false'}" class="alert alert-danger alert-dissmissible" role="alert">
-				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-					<span aria-hidden="true">x</span>
-				</button>
-				<p th:text="${message}" class="text-center"></p>
+	
+			<div>
+				<form id="importProgramsForm" data-ajax="false" th:action="@{/importPrograms}" method="post" class="text-left" enctype="multipart/form-data">
+					<div class="form-group">
+	                      <label for="file" th:text="#{import.program.upload.file}"></label>
+	                      <input type="file" id="file" name="file" class="form-control" />
+	                  </div>
+	                  <button type="submit" class="btn btn-primary" th:text="#{form.submit}"></button>
+				</form>
 			</div>
 		</div>
-
-		<div>
-			<form id="importProgramForm" data-ajax="false" th:action="@{/importPrograms}" method="post" class="text-left" enctype="multipart/form-data">
-				<div class="form-group">
-                      <label for="file" th:text="#{import.program.upload.file}"></label>
-                      <input type="file" id="file" name="file" class="form-control" />
-                  </div>
-                  <button type="submit" class="btn btn-primary" th:text="#{form.submit}"></button>
-			</form>
-		</div>
+	
+		<div th:replace="common/footer :: fixed-footer"></div>
+	
+		<div th:replace="common/menu :: menu-panel"></div>
+	
+		<div th:replace="common/login :: login-panel"></div>
+	
 	</div>
-
-	<div th:replace="common/footer :: fixed-footer"></div>
-
-	<div th:replace="common/menu :: menu-panel"></div>
-
-	<div th:replace="common/login :: login-panel"></div>
-
-	<!-- <div class="container">
-		<div class="row">
-			<div class="col-md-6 col-md-offset-3">
-				<div th:if="${imported != null}">
-					<div th:if="${imported == 'true'}" class="alert alert-success alert-dissmissible" role="alert">
-						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-							<span aria-hidden="true">x</span>
-						</button>
-						<p th:text="#{import.program.imported.success}" class="text-center"></p>
-					</div>
-					<div th:if="${imported == 'false'}" class="alert alert-danger alert-dissmissible" role="alert">
-						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-							<span aria-hidden="true">x</span>
-						</button>
-						<p th:text="${message}" class="text-center"></p>
-					</div>
-				</div>
-
-				<div class="well">
-					<form id="importProgramForm" th:action="@{/importProgram}" method="post" class="text-left" enctype="multipart/form-data">
-						<div class="form-group">
-	                        <label for="file" th:text="#{import.program.upload.file}"></label>
-	                        <input type="file" id="file" name="file" class="form-control" />
-	                    </div>
-	                    <button type="submit" class="btn btn-primary" th:text="#{form.submit}"></button>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div> -->
-
-</div>
 
 	<!-- Bootstrap core JavaScript -->
 	<div th:replace="common/header :: before-body-scripts"></div>

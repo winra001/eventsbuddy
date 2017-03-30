@@ -33,4 +33,28 @@ $(document).ready(function() {
 			error.insertAfter( element.parent() );
 		}
 	});
+	
+	$("#importAttendancesForm").validate({
+		rules: {
+			file: "required"
+		},
+		messages: {
+			file: "Please choose a file to import attendances"
+		},
+		errorPlacement: function( error, element ) {
+			error.insertAfter( element.parent() );
+		}
+	});
+
+	$("#importProgramsForm").validate({
+		rules: {
+			file: "required"
+		},
+		messages: {
+			file: "Please choose a file to import programs"
+		},
+		errorPlacement: function( error, element ) {
+			error.insertAfter( element.parent() );
+		}
+	});
 });

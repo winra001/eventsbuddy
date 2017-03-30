@@ -32,7 +32,7 @@
 				<form id="importAttendancesForm" data-ajax="false" th:action="@{/importAttendances}" method="post" class="text-left" enctype="multipart/form-data">
 					<div class="form-group">
 	                      <label for="file" th:text="#{import.attendances.upload.file}"></label>
-	                      <input type="file" id="file" name="file" class="form-control" />
+	                      <input type="file" id="file" name="file" class="required form-control" />
 	                  </div>
 	                  <button type="submit" class="btn btn-primary" th:text="#{form.submit}"></button>
 				</form>
