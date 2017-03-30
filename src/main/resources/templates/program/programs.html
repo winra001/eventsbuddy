@@ -22,7 +22,8 @@
 				<div th:id="|tab_${eventDate}|" class="ui-body-d un-content" th:each="eventDate, iter : ${eventDates}">
 					<ul data-role="listview" data-inset="true" data-corners="false">
 						<li th:id="${program.id}" th:each="program : ${programList.get(eventDate)}">
-							<a th:href="@{/program/__${program.id}__}" th:utext="|${program.title} &lt;span class=&quot;ui-li-count&quot;&gt;12&lt;/span&gt;|"></a>	<!-- // Means: <span class="ui-li-count">12</span> -->
+							<a th:href="@{/program/__${program.id}__}"
+							   th:utext="|${program.title} &lt;span class=&quot;ui-li-count&quot;&gt;${#dates.format(program.beginDate, 'HH:mm')}-${#dates.format(program.endDate, 'HH:mm')}&lt;/span&gt;|"></a>	<!-- // Means: <span class="ui-li-count">12</span> -->
 						</li>
 					</ul>
 				</div>
