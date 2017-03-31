@@ -11,6 +11,12 @@
 
 		<div data-role="main">
 			<h1 th:text="${program.title}"></h1>
+			<ul>
+				<li th:each="chairs : ${program.programChairs}" style="display: inline;">
+					<p th:text="${chairs.chair.name}"></p>
+				</li>
+			</ul>
+			<p th:text="${program.description}"></p>
 		</div>
 
 		<div th:replace="common/footer :: fixed-footer"></div>
